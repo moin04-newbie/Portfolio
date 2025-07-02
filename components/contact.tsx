@@ -24,10 +24,20 @@ export default function Contact() {
     setSubmitStatus("idle")
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-      console.log("Form submitted:", formData)
-      setSubmitStatus("success")
-      setFormData({ name: "", email: "", subject: "", message: "" })
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitStatus("success")
+        setFormData({ name: "", email: "", subject: "", message: "" })
+      } else {
+        setSubmitStatus("error")
+      }
     } catch (error) {
       setSubmitStatus("error")
     } finally {

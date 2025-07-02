@@ -44,7 +44,7 @@ function FloatingIcons() {
     <group>
       {icons.map((icon, index) => (
         <Float key={index} speed={1 + index * 0.2} rotationIntensity={0.5} floatIntensity={0.5}>
-          <mesh position={icon.position}>
+          <mesh position={icon.position as [number, number, number]}>
             <octahedronGeometry args={[0.3]} />
             <meshStandardMaterial
               color={icon.color}
@@ -77,10 +77,20 @@ export default function Contact3D() {
     setSubmitStatus("idle")
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-      console.log("Form submitted:", formData)
-      setSubmitStatus("success")
-      setFormData({ name: "", email: "", subject: "", message: "" })
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitStatus("success")
+        setFormData({ name: "", email: "", subject: "", message: "" })
+      } else {
+        setSubmitStatus("error")
+      }
     } catch (error) {
       setSubmitStatus("error")
     } finally {
