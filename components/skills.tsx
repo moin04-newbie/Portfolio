@@ -10,19 +10,29 @@ export default function Skills() {
       ],
     },
     {
-      title: "Development",
+      title: "Frontend",
       skills: [
-        { name: "React/Next.js", level: 92 },
-        { name: "Flutter", level: 88 },
-        { name: "HTML,CSS,JavaScript", level: 70 },
-        { name: "Gsap", level: 50 },
+        { name: "HTML,CSS,JavaScript", level: 90 },
+        { name: "Tailwind", level: 80 },
+        { name: "React/Next.js", level: 70 },
+        { name: "Flutter", level: 50 },
+      ],
+    },
+    {
+      title: "Backend",
+      skills: [
+        { name: "Node.js", level: 85 },
+        { name: "RESTful APIs", level: 88 },
+        { name: "MongoDB", level: 75 },
+        { name: "PostgreSQL", level: 70 },
+        { name: "MySQL", level: 65 },
       ],
     },
     {
       title: "Tools",
       skills: [
-        { name: "Figma", level: 95 },
-        { name: "GitHub", level: 95 },
+        { name: "Figma", level: 75 },
+        { name: "Git,GitHub", level: 95 },
       ],
     },
   ];
